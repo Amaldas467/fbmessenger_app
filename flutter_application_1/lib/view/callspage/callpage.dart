@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/view/callspage/callontap.dart';
 import 'package:flutter_application_1/view/callspage/startacall.dart';
 
 class Callpage extends StatefulWidget {
@@ -208,7 +209,15 @@ class _CallpageState extends State<Callpage> {
                                     child: Stack(
                                       children: [
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Callontap(),
+                                              ),
+                                            );
+                                          },
                                           icon: Icon(
                                             Icons.phone,
                                             size: 15,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_1/view/homescreen/bottomnav.dart';
+
 import 'package:flutter_application_1/view/splashscreen/splashscreen.dart';
-//import 'package:flutter_application_1/view/callspage/callpage.dart';
-//import 'package:flutter_application_1/view/homescreen/homescreen.dart';
 
 void main() {
   runApp(MyApp());
