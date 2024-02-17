@@ -21,21 +21,31 @@ class _ChatpageState extends State<Chatpage> {
         iconTheme: IconThemeData(
           color: Color.fromARGB(255, 212, 10, 247),
         ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 17,
-              backgroundColor: Colorconstant.mycustomlightgrey,
-            ),
-            SizedBox(
-              width: 15,
-            ),
-            Text(
-              'Name',
-              style:
-                  TextStyle(color: Colorconstant.mycustomwhite, fontSize: 20),
-            )
-          ],
+        title: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Infobutton(),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 17,
+                backgroundColor: Colorconstant.mycustomlightgrey,
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                'Name',
+                style:
+                    TextStyle(color: Colorconstant.mycustomwhite, fontSize: 20),
+              )
+            ],
+          ),
         ),
         actions: [
           IconButton(

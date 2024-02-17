@@ -37,8 +37,8 @@ class Chatwidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'last message',
-                      style: TextStyle(),
+                      'You are now connected on messenger...',
+                      style: TextStyle(color: Colorconstant.mycustomlightgrey),
                     ),
                   ],
                 ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 import 'package:flutter_application_1/view/homescreen/editiconhomescreen/editicon_homescreen.dart';
 import 'package:flutter_application_1/view/homescreen/widgets/chatwidget.dart';
-import 'package:flutter_application_1/view/homescreen/status_widget.dart';
+import 'package:flutter_application_1/view/homescreen/widgets/status_widget.dart';
 import 'package:flutter_application_1/view/searchontap/ontapsearch.dart';
 
 class Homescreen extends StatefulWidget {
@@ -16,6 +15,7 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   int selectedindex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,10 +53,11 @@ class _HomescreenState extends State<Homescreen> {
             child: IconButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Editicon_homescreen(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Editicon_homescreen(),
+                  ),
+                );
               },
               icon: Icon(
                 Icons.edit,
@@ -92,10 +93,11 @@ class _HomescreenState extends State<Homescreen> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Ontapsearch(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Ontapsearch(),
+                          ),
+                        );
                       },
                       child: Row(
                         children: [
@@ -123,7 +125,7 @@ class _HomescreenState extends State<Homescreen> {
             Padding(
               padding: const EdgeInsets.only(left: 9, right: 9),
               child: Container(
-                height: 90,
+                height: 80,
                 color: Color.fromARGB(255, 9, 9, 9),
                 child: Container(
                   decoration: BoxDecoration(
@@ -135,7 +137,37 @@ class _HomescreenState extends State<Homescreen> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return Statuswidget();
+                      return Container(
+                        width: 90,
+                        height: 90,
+                        child: index == 0
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 10.0),
+                                child: Container(
+                                  height: 20,
+                                  width: 90,
+                                  decoration: BoxDecoration(
+                                    color: Colorconstant.mycustomlightgrey,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        top: 2,
+                                        left: 2,
+                                        child: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor:
+                                              Colorconstant.mycustomgrey,
+                                          child: Icon(Icons.add),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Statuswidget(),
+                      );
                     },
                   ),
                 ),

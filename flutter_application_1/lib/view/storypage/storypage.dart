@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/storypage/ontapstory.dart';
+import 'package:flutter_application_1/view/storypage/widgets/story_widget.dart';
 
 class Storypage extends StatefulWidget {
-  const Storypage({super.key});
+  const Storypage({Key? key});
 
   @override
   State<Storypage> createState() => _StorypageState();
@@ -46,56 +46,41 @@ class _StorypageState extends State<Storypage> {
           //crossAxisSpacing: 10,
           //mainAxisSpacing: 20,
         ),
-        itemCount: 10,
+        itemCount: 10 + 1,
         itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 20, right: 15, top: 30),
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Ontapstory(),
-                    ));
-              },
+          if (index == 0) {
+            // First position
+            return Padding(
+              padding: const EdgeInsets.only(top: 30, left: 20, right: 14),
               child: Container(
+                height: 45,
+                width: 45,
                 decoration: BoxDecoration(
-                    color: Colorconstant.mycustomlightgrey,
-                    borderRadius: BorderRadius.circular(20)),
+                  color: Colorconstant.mycustomlightgrey,
+                  borderRadius: BorderRadius.circular(25),
+                ),
                 child: Stack(
                   children: [
                     Positioned(
-                      left: 8,
-                      top: 8,
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(color: Colors.blue, width: 3)),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                                left: 4.5,
-                                top: 4.5,
-                                child: Container(
-                                  height: 29,
-                                  width: 29,
-                                  decoration: BoxDecoration(
-                                    color: Colorconstant.mycustomwhite,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                )),
-                          ],
+                      left: 10,
+                      top: 10,
+                      child: CircleAvatar(
+                        radius: 18,
+                        child: Icon(
+                          Icons.add,
+                          size: 30,
+                          color: Colors.black,
                         ),
                       ),
                     )
                   ],
                 ),
               ),
-            ),
-          );
+            );
+          } else {
+            // Other positions
+            return Story_widget();
+          }
         },
       ),
     );

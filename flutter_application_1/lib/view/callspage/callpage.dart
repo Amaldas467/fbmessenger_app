@@ -44,7 +44,14 @@ class _CallpageState extends State<Callpage> {
           CircleAvatar(
             backgroundColor: Colorconstant.mycustomgrey,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Startacall(),
+                  ),
+                );
+              },
               icon: Icon(
                 Icons.phone,
                 size: 20,
@@ -58,7 +65,14 @@ class _CallpageState extends State<Callpage> {
           CircleAvatar(
             backgroundColor: Colorconstant.mycustomgrey,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Startacall(),
+                  ),
+                );
+              },
               icon: Icon(
                 Icons.videocam,
                 size: 22,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/view/people/contacts_people.dart';
 
 import 'package:flutter_application_1/view/people/widgets/peoplewidget.dart';
 
@@ -46,7 +47,13 @@ class _PeoplepageState extends State<Peoplepage> {
           CircleAvatar(
             backgroundColor: Colorconstant.mycustomgrey,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Contacts_people(),
+                    ));
+              },
               icon: Icon(
                 Icons.perm_contact_calendar,
                 size: 24,
