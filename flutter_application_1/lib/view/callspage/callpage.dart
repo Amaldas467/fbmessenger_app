@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/callspage/callontap.dart';
+import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
 import 'package:flutter_application_1/view/callspage/startacall.dart';
+import 'package:flutter_application_1/view/callspage/widgets/callwidget.dart';
 
 class Callpage extends StatefulWidget {
   const Callpage({super.key});
@@ -134,10 +135,13 @@ class _CallpageState extends State<Callpage> {
                     ),
                     Row(
                       children: [
-                        Text(
-                          'Suggestion',
-                          style:
-                              TextStyle(color: Colorconstant.mycustomlightgrey),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, bottom: 5),
+                          child: Text(
+                            'Suggestion',
+                            style: TextStyle(
+                                color: Colorconstant.mycustomlightgrey),
+                          ),
                         )
                       ],
                     )
@@ -158,103 +162,7 @@ class _CallpageState extends State<Callpage> {
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Container(
-                          height: 58,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colorconstant.mycustomblack,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 25,
-                                    backgroundColor:
-                                        Colorconstant.mycustomlightgrey,
-                                  ),
-                                  SizedBox(width: 20),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Name',
-                                        style: TextStyle(
-                                          color:
-                                              Colorconstant.mycustomlightgrey,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        'last message',
-                                        style: TextStyle(),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 16,
-                                    backgroundColor: Colorconstant.mycustomgrey,
-                                    child: Stack(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Callontap(),
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(
-                                            Icons.phone,
-                                            size: 15,
-                                            color: Colorconstant.mycustomwhite,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  CircleAvatar(
-                                    radius: 16,
-                                    backgroundColor: Colorconstant.mycustomgrey,
-                                    child: Stack(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(
-                                            Icons.videocam,
-                                            size: 15,
-                                            color: Colorconstant.mycustomwhite,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      );
+                      return Callpagewidget();
                     },
                   ),
                 ),

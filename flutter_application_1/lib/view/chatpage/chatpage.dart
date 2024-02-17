@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
+import 'package:flutter_application_1/view/audio&vediocall/vediocallontap.dart';
+import 'package:flutter_application_1/view/chatpage/infobutton/infobutton.dart';
 
 class Chatpage extends StatefulWidget {
   const Chatpage({super.key});
@@ -36,21 +39,41 @@ class _ChatpageState extends State<Chatpage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Callontap(),
+                  ));
+            },
             icon: Icon(
               Icons.phone,
               size: 25,
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Videocallontap(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.videocam_rounded,
               size: 28,
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Infobutton(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.info,
               size: 28,
@@ -158,6 +181,9 @@ class _ChatpageState extends State<Chatpage> {
                             border: Border.all(color: Colors.black)),
                         child: Center(
                             child: TextField(
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none)),
                           textAlign: TextAlign.center,
                         )),
                       ),

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/homescreen/bottomnav.dart';
+import 'package:flutter_application_1/view/bottom_navigation/bottomnav.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);

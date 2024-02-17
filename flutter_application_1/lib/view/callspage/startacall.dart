@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 
 class Startacall extends StatefulWidget {
@@ -141,7 +142,14 @@ class _StartacallState extends State<Startacall> {
                                     child: Stack(
                                       children: [
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Callontap(),
+                                                ));
+                                          },
                                           icon: Icon(
                                             Icons.phone,
                                             size: 15,

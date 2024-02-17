@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-//import 'package:flutter_application_1/view/chatpage/chatbottmnav.dart';
+
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
+import 'package:flutter_application_1/view/homescreen/editiconhomescreen/editicon_homescreen.dart';
+import 'package:flutter_application_1/view/homescreen/widgets/chatwidget.dart';
+import 'package:flutter_application_1/view/homescreen/status_widget.dart';
 import 'package:flutter_application_1/view/searchontap/ontapsearch.dart';
 
 class Homescreen extends StatefulWidget {
@@ -48,7 +51,13 @@ class _HomescreenState extends State<Homescreen> {
           CircleAvatar(
             backgroundColor: Colorconstant.mycustomgrey,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Editicon_homescreen(),
+                    ));
+              },
               icon: Icon(
                 Icons.edit,
                 size: 20,
@@ -126,42 +135,7 @@ class _HomescreenState extends State<Homescreen> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return Row(
-                        //statusbar & sizedbox space
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Chatpage(),
-                                ),
-                              );
-                            },
-                            child: CircleAvatar(
-                              radius: 40,
-                              backgroundColor: Colorconstant.mycustomlightgrey,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    bottom: 8,
-                                    right: 4,
-                                    child: CircleAvatar(
-                                      radius: 8,
-                                      backgroundColor:
-                                          Colorconstant.mycustomgreen,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 6,
-                          )
-                        ],
-                      );
+                      return Statuswidget();
                     },
                   ),
                 ),
@@ -189,59 +163,7 @@ class _HomescreenState extends State<Homescreen> {
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Container(
-                          height: 58,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colorconstant.mycustomblack,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 25,
-                                    backgroundColor:
-                                        Colorconstant.mycustomlightgrey,
-                                  ),
-                                  SizedBox(width: 20),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Name',
-                                        style: TextStyle(
-                                          color:
-                                              Colorconstant.mycustomlightgrey,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        'last message',
-                                        style: TextStyle(),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 13,
-                                width: 13,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
+                      return Chatwidget();
                     },
                   ),
                 ),

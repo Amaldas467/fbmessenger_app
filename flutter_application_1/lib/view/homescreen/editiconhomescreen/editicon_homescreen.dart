@@ -3,32 +3,61 @@ import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 import 'package:flutter_application_1/view/searchontap/widgets/searchwidget.dart';
 
-class Ontapsearch extends StatefulWidget {
-  const Ontapsearch({super.key});
+class Editicon_homescreen extends StatelessWidget {
+  const Editicon_homescreen({super.key});
 
-  @override
-  State<Ontapsearch> createState() => _OntapsearchState();
-}
-
-class _OntapsearchState extends State<Ontapsearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colorconstant.mycustomblack,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colorconstant.mycustomwhite),
-        backgroundColor: Colorconstant.mycustomblack,
-        title: TextField(
-          decoration: InputDecoration(
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              hintText: 'Search',
-              hintStyle: TextStyle(color: Colorconstant.mycustomlightgrey)),
-        ),
-      ),
+          iconTheme: IconThemeData(color: Colorconstant.mycustomwhite),
+          backgroundColor: Colorconstant.mycustomblack,
+          title: Text(
+            'New messages',
+            style: TextStyle(color: Colorconstant.mycustomwhite),
+          )),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text(
+                      'To:',
+                      style: TextStyle(color: Colorconstant.mycustomwhite),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 28,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      color: Colorconstant.mycustomblack,
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
+                            hintText: 'Type a name or group',
+                            hintStyle:
+                                TextStyle(color: Colorconstant.mycustomwhite),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 10),
               child: InkWell(
@@ -76,7 +105,6 @@ class _OntapsearchState extends State<Ontapsearch> {
                       builder: (context) => Chatpage(),
                     ),
                   );
-                  setState(() {});
                 },
                 child: Container(
                   color: Colorconstant.mycustomblack,
