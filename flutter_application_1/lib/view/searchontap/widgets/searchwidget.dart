@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 
 class Searchwidget extends StatelessWidget {
-  const Searchwidget({super.key});
-
+  const Searchwidget(
+      {super.key, required this.profilepic, required this.username});
+  final String profilepic;
+  final String username;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,9 +22,15 @@ class Searchwidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  radius: 22,
-                  backgroundColor: Colorconstant.mycustomlightgrey,
+                ClipOval(
+                  child: CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Colorconstant.mycustomlightgrey,
+                    child: Image(
+                      image: NetworkImage(profilepic),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -30,7 +38,7 @@ class Searchwidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Name',
+                      username,
                       style: TextStyle(
                         color: Colorconstant.mycustomlightgrey,
                         fontSize: 16,

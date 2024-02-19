@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 import 'package:flutter_application_1/view/searchontap/widgets/searchwidget.dart';
 
@@ -85,7 +86,9 @@ class _OntapsearchState extends State<Ontapsearch> {
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: (BuildContext context, int index) {
-                      return Searchwidget();
+                      return Searchwidget(
+                          profilepic: Database.userdetails[index]["profilepic"],
+                          username: Database.userdetails[index]["username"]);
                     },
                   ),
                 ),
