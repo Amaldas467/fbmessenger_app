@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/storypage/widgets/story_widget.dart';
+import 'package:flutter_application_1/view/storypage/ontapstory.dart';
 
 class Storypage extends StatefulWidget {
-  const Storypage({Key? key});
+  const Storypage({Key? key}) : super(key: key);
 
   @override
   State<Storypage> createState() => _StorypageState();
@@ -43,44 +45,25 @@ class _StorypageState extends State<Storypage> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisExtent: 230,
-          //crossAxisSpacing: 10,
-          //mainAxisSpacing: 20,
         ),
-        itemCount: 10 + 1,
+        itemCount: Database.userdetails.length,
         itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            // First position
-            return Padding(
-              padding: const EdgeInsets.only(top: 30, left: 20, right: 14),
-              child: Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  color: Colorconstant.mycustomlightgrey,
-                  borderRadius: BorderRadius.circular(25),
+          return Story_widget(
+            profilepic: Database.userdetails[index]["profilepic"],
+            statuspic: Database.userdetails[index]["statuspic"],
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Ontapstory(
+                    profilepic: Database.userdetails[index]["profilepic"],
+                    statuspic: Database.userdetails[index]["statuspic"],
+                    username: Database.userdetails[index]["username"],
+                  ),
                 ),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 10,
-                      top: 10,
-                      child: CircleAvatar(
-                        radius: 18,
-                        child: Icon(
-                          Icons.add,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            );
-          } else {
-            // Other positions
-            return Story_widget();
-          }
+              );
+            },
+          );
         },
       ),
     );

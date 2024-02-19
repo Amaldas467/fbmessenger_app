@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 
 class Statuswidget extends StatelessWidget {
-  const Statuswidget({super.key});
-
+  const Statuswidget({super.key, required this.profilepic});
+  final String profilepic;
   @override
   Widget build(BuildContext context) {
     return Row(
-      //statusbar & sizedbox space
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Chatpage(),
-              ),
-            );
-          },
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: Colorconstant.mycustomlightgrey,
+          onTap: () {},
+          child: Container(
+            height: 80,
+            width: 80,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(profilepic), fit: BoxFit.cover),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(50),
+            ),
             child: Stack(
               children: [
                 Positioned(
-                  bottom: 8,
-                  right: 4,
+                  bottom: 3,
+                  right: 3,
                   child: CircleAvatar(
-                    radius: 8,
+                    radius: 10,
                     backgroundColor: Colorconstant.mycustomgreen,
                   ),
                 ),

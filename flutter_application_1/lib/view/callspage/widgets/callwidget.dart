@@ -4,8 +4,10 @@ import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
 import 'package:flutter_application_1/view/audio&vediocall/vediocallontap.dart';
 
 class Callpagewidget extends StatelessWidget {
-  const Callpagewidget({super.key});
-
+  const Callpagewidget(
+      {super.key, required this.username, required this.profilepic});
+  final String username;
+  final String profilepic;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,9 +24,15 @@ class Callpagewidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colorconstant.mycustomlightgrey,
+                ClipOval(
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colorconstant.mycustomlightgrey,
+                    child: Image(
+                      image: NetworkImage(profilepic),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -32,7 +40,7 @@ class Callpagewidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Name',
+                      username,
                       style: TextStyle(
                         color: Colorconstant.mycustomlightgrey,
                         fontSize: 16,

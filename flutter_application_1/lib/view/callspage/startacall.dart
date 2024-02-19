@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 
@@ -105,10 +106,16 @@ class _StartacallState extends State<Startacall> {
                             children: [
                               Row(
                                 children: [
-                                  CircleAvatar(
-                                    radius: 25,
-                                    backgroundColor:
-                                        Colorconstant.mycustomlightgrey,
+                                  ClipOval(
+                                    child: CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor:
+                                          Colorconstant.mycustomlightgrey,
+                                      child: Image(
+                                          image: NetworkImage(
+                                              Database.userdetails[index]
+                                                  ["profilepic"])),
+                                    ),
                                   ),
                                   SizedBox(width: 20),
                                   Column(
@@ -117,7 +124,7 @@ class _StartacallState extends State<Startacall> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Name',
+                                        Database.userdetails[index]["username"],
                                         style: TextStyle(
                                           color:
                                               Colorconstant.mycustomlightgrey,

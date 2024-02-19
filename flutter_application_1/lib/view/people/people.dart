@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/people/contacts_people.dart';
 
 import 'package:flutter_application_1/view/people/widgets/peoplewidget.dart';
@@ -51,7 +52,7 @@ class _PeoplepageState extends State<Peoplepage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Contacts_people(),
+                      builder: (context) => ContactsPeople(),
                     ));
               },
               icon: Icon(
@@ -84,7 +85,7 @@ class _PeoplepageState extends State<Peoplepage> {
                   child: Row(
                     children: [
                       Text(
-                        'Actine now ( )',
+                        'Actine now (20)',
                         style:
                             TextStyle(color: Colorconstant.mycustomlightgrey),
                       )
@@ -104,9 +105,12 @@ class _PeoplepageState extends State<Peoplepage> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 20,
+                    itemCount: Database.userdetails.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Peoplewidget();
+                      return Peoplewidget(
+                          username: Database.userdetails[index]["username"],
+                          profilepic: Database.userdetails[index]
+                              ["profilepic"]);
                     },
                   ),
                 ),

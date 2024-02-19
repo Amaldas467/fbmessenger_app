@@ -1,14 +1,33 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 
 class Ontapstory extends StatefulWidget {
-  const Ontapstory({Key? key}) : super(key: key);
+  final String statuspic;
+  final String username;
+  final String profilepic;
+  const Ontapstory({
+    Key? key,
+    required this.statuspic,
+    required this.username,
+    required this.profilepic,
+  }) : super(key: key);
 
   @override
   State<Ontapstory> createState() => _OntapstoryState();
 }
 
 class _OntapstoryState extends State<Ontapstory> {
+  void initState() {
+    Timer(
+      Duration(seconds: 2),
+      () {
+        Navigator.pop(context);
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,11 +40,17 @@ class _OntapstoryState extends State<Ontapstory> {
                 height: 828,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 253, 253, 253),
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    colors: [
+                      const Color.fromARGB(255, 245, 120, 112),
+                      const Color.fromARGB(255, 225, 146, 239),
+                    ],
+                  ),
                 ),
                 child: Stack(
                   children: [
-                    // First Container
                     Positioned(
                       top: 0,
                       left: 0,
@@ -41,8 +66,14 @@ class _OntapstoryState extends State<Ontapstory> {
                                 height: 50,
                                 width: 50,
                                 decoration: BoxDecoration(
-                                    color: Colorconstant.mycustomlightgrey,
-                                    borderRadius: BorderRadius.circular(30)),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                        widget.profilepic,
+                                      ),
+                                      fit: BoxFit.cover),
+                                  color: Colorconstant.mycustomwhite,
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
                                 child: Stack(
                                   children: [
                                     Positioned(
@@ -63,11 +94,11 @@ class _OntapstoryState extends State<Ontapstory> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Name',
+                                  widget.username,
                                   style: TextStyle(
-                                    color: Colorconstant.mycustomlightgrey,
-                                    fontSize: 16,
-                                  ),
+                                      color: Colorconstant.mycustomwhite,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
@@ -80,7 +111,7 @@ class _OntapstoryState extends State<Ontapstory> {
                                   onPressed: () {},
                                   icon: Icon(
                                     Icons.more_horiz,
-                                    color: Colorconstant.mycustomlightgrey,
+                                    color: Colorconstant.mycustomwhite,
                                   ),
                                 ),
                                 IconButton(
@@ -88,7 +119,7 @@ class _OntapstoryState extends State<Ontapstory> {
                                     Navigator.pop(context);
                                   },
                                   icon: Icon(Icons.close),
-                                  color: Colorconstant.mycustomlightgrey,
+                                  color: Colorconstant.mycustomwhite,
                                 )
                               ],
                             )
@@ -96,7 +127,6 @@ class _OntapstoryState extends State<Ontapstory> {
                         ),
                       ),
                     ),
-                    // Second Container
                     Positioned(
                       top: 100,
                       left: 0,
@@ -104,11 +134,14 @@ class _OntapstoryState extends State<Ontapstory> {
                         height: 650,
                         width: 500,
                         color: Colorconstant.mycustomlightgrey,
+                        child: Image.network(
+                          widget.statuspic,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    // Third Container
                     Positioned(
-                      top: 750,
+                      top: 740,
                       left: 0,
                       child: Container(
                         height: 100,
@@ -116,21 +149,26 @@ class _OntapstoryState extends State<Ontapstory> {
                         color: Colors.transparent,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 30,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                    color: Colorconstant.mycustomwhite,
-                                    borderRadius: BorderRadius.circular(25),
-                                    border: Border.all(
-                                        color: Colorconstant.mycustomblack)),
-                                child: TextField(
-                                  decoration: InputDecoration(),
-                                ),
-                              )
-                            ],
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 30,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                      color: Colorconstant.mycustomwhite,
+                                      borderRadius: BorderRadius.circular(25),
+                                      border: Border.all(
+                                          color: Colorconstant.mycustomwhite)),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide.none)),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

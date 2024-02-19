@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 
 class Contact_widgets extends StatelessWidget {
-  const Contact_widgets({super.key});
+  const Contact_widgets({
+    super.key,
+    required this.username,
+    required this.profilepic,
+  });
+  final String username;
+  final String profilepic;
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +41,10 @@ class Contact_widgets extends StatelessWidget {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(profilepic), fit: BoxFit.cover),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30)),
-                    //child: Stack(
-                    //  children: [
-                    //    Positioned(
-                    //      bottom: 0,
-                    //      right: 0,
-                    //      child: CircleAvatar(
-                    //        radius: 10,
-                    //        backgroundColor: Colorconstant.mycustomgreen,
-                    //      ),
-                    //    ),
-                    //  ],
-                    //),
                   ),
                   SizedBox(width: 20),
                   Column(
@@ -55,7 +52,7 @@ class Contact_widgets extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Name',
+                        username,
                         style: TextStyle(
                           color: Colorconstant.mycustomlightgrey,
                           fontSize: 16,

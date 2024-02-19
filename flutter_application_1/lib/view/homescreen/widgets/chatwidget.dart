@@ -1,9 +1,22 @@
+// Chatwidget.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 
-class Chatwidget extends StatelessWidget {
-  const Chatwidget({super.key});
+class ChatWidget extends StatefulWidget {
+  const ChatWidget(
+      {Key? key,
+      required this.username,
+      required this.profilepic,
+      required Null Function() onTap})
+      : super(key: key);
+  final String username;
+  final String profilepic;
 
+  @override
+  State<ChatWidget> createState() => _ChatWidgetState();
+}
+
+class _ChatWidgetState extends State<ChatWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,6 +36,7 @@ class Chatwidget extends StatelessWidget {
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colorconstant.mycustomlightgrey,
+                  backgroundImage: NetworkImage(widget.profilepic),
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -30,7 +44,7 @@ class Chatwidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Name',
+                      widget.username,
                       style: TextStyle(
                         color: Colorconstant.mycustomlightgrey,
                         fontSize: 16,

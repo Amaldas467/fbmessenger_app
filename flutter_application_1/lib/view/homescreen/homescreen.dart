@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 import 'package:flutter_application_1/view/homescreen/editiconhomescreen/editicon_homescreen.dart';
 import 'package:flutter_application_1/view/homescreen/widgets/chatwidget.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_application_1/view/homescreen/widgets/status_widget.dart
 import 'package:flutter_application_1/view/searchontap/ontapsearch.dart';
 
 class Homescreen extends StatefulWidget {
-  const Homescreen({Key? key});
+  const Homescreen({Key? key}) : super(key: key);
 
   @override
   State<Homescreen> createState() => _HomescreenState();
@@ -135,39 +136,56 @@ class _HomescreenState extends State<Homescreen> {
                   child: ListView.builder(
                     //statusbar
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: Database.userdetails.length + 1,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: 90,
-                        height: 90,
-                        child: index == 0
-                            ? Padding(
-                                padding: const EdgeInsets.only(right: 10.0),
-                                child: Container(
-                                  height: 20,
-                                  width: 90,
-                                  decoration: BoxDecoration(
-                                    color: Colorconstant.mycustomlightgrey,
-                                    borderRadius: BorderRadius.circular(50),
+                      if (index == 0) {
+                        // Show the container with the add icon
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              height: 20,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    Database.admindetails[index]["profilepic"],
                                   ),
-                                  child: Stack(
-                                    children: [
-                                      Positioned(
-                                        top: 2,
-                                        left: 2,
-                                        child: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              Colorconstant.mycustomgrey,
-                                          child: Icon(Icons.add),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  fit: BoxFit.cover,
                                 ),
-                              )
-                            : Statuswidget(),
-                      );
+                                color: Colorconstant.mycustomlightgrey,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    top: 2,
+                                    left: 2,
+                                    child: CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor:
+                                          Color.fromARGB(255, 78, 77, 77),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colorconstant.mycustomlightgrey,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      } else {
+                        // Show the builder
+                        final userIndex =
+                            index - 1; // Adjust index to match user data
+                        return Statuswidget(
+                          profilepic: Database.userdetails[userIndex]
+                              ["profilepic"],
+                        );
+                      }
                     },
                   ),
                 ),
@@ -193,9 +211,15 @@ class _HomescreenState extends State<Homescreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 20,
+                    itemCount: Database.userdetails.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Chatwidget();
+                      return ChatWidget(
+                        onTap: () {},
+                        username:
+                            Database.userdetails[index]["username"].toString(),
+                        profilepic: Database.userdetails[index]["profilepic"]
+                            .toString(),
+                      );
                     },
                   ),
                 ),

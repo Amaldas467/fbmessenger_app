@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/bottom_navigation/bottomnav.dart';
+
+import 'package:flutter_application_1/view/loginpage/loginpage.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
       () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Bottomnav()),
+          MaterialPageRoute(builder: (context) => Loginpage()),
         );
       },
     );

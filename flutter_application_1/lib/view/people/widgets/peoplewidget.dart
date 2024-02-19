@@ -4,7 +4,10 @@ import 'package:flutter_application_1/view/chatpage/chatpage.dart';
 import '../../../utils/colors.dart';
 
 class Peoplewidget extends StatelessWidget {
-  const Peoplewidget({super.key});
+  const Peoplewidget(
+      {super.key, required this.username, required this.profilepic});
+  final String username;
+  final String profilepic;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class Peoplewidget extends StatelessWidget {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
+                        image: DecorationImage(image: NetworkImage(profilepic)),
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30)),
                     child: Stack(
@@ -56,7 +60,7 @@ class Peoplewidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Name',
+                        username,
                         style: TextStyle(
                           color: Colorconstant.mycustomlightgrey,
                           fontSize: 16,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/colors.dart';
+import 'package:flutter_application_1/utils/database.dart';
 import 'package:flutter_application_1/view/people/widgets/contact_widgets.dart';
-import 'package:flutter_application_1/view/people/widgets/peoplewidget.dart';
+
 import 'package:flutter_application_1/view/searchontap/ontapsearch.dart';
 
-class Contacts_people extends StatelessWidget {
-  const Contacts_people({super.key});
+class ContactsPeople extends StatelessWidget {
+  const ContactsPeople({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +74,13 @@ class Contacts_people extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: 20,
+              itemCount: Database.userdetails.length,
               itemBuilder: (BuildContext context, int index) {
-                return Contact_widgets();
+                return Contact_widgets(
+                  username: Database.userdetails[index]["username"].toString(),
+                  profilepic:
+                      Database.userdetails[index]["profilepic"].toString(),
+                );
               },
             ),
           ],

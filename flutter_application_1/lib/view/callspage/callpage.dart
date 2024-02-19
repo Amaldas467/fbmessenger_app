@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/utils/colors.dart';
-import 'package:flutter_application_1/view/audio&vediocall/callontap.dart';
+import 'package:flutter_application_1/utils/database.dart';
+
 import 'package:flutter_application_1/view/callspage/startacall.dart';
 import 'package:flutter_application_1/view/callspage/widgets/callwidget.dart';
 
@@ -176,7 +177,10 @@ class _CallpageState extends State<Callpage> {
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: (BuildContext context, int index) {
-                      return Callpagewidget();
+                      return Callpagewidget(
+                          username: Database.userdetails[index]["username"],
+                          profilepic: Database.userdetails[index]
+                              ["profilepic"]);
                     },
                   ),
                 ),
